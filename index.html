@@ -9,9 +9,9 @@ writer.write(await (await fetch(`data:application/gzip;base64,H4sIAAAAAAAACty9ab
 writer.close();
 const rawContent = await new TextDecoder().decode(await new Response(ds.readable).arrayBuffer());
 const doc=new DOMParser().parseFromString(rawContent, "text/html");
-if (new 网站(location.href).searchParams.get("raw")) {
+if (new URL(location.href).searchParams.get("raw")) {
 const aLink = document.createElement("a");
-aLink.href = 网站.createObjectURL(new Blob([rawContent],{type:"text/html"}));
+aLink.href = URL.createObjectURL(new Blob([rawContent],{type:"text/html"}));
 aLink.download = doc.head.dataset.version + ".html";
 aLink.click();
 }
